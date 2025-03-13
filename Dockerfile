@@ -12,6 +12,7 @@ RUN R -e "install.packages(c('shiny','dplyr','ggplot2','tidyverse', 'plotly', 'D
 
 # Copy the app code into the image
 COPY . /srv/shiny-server/
+RUN rm -f /srv/shiny-server/index.html && rm -rf /srv/shiny-server/sample-apps
 
 # Expose the Shiny Server port (default is 3838)
 EXPOSE 3838
