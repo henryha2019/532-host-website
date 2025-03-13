@@ -1,0 +1,10 @@
+name: fifa_dashboard
+channels:
+  - conda-forge
+dependencies:
+  - r-base=4.1.2
+  - r-shiny=1.7.1
+  - r-ggplot2=3.3.5
+  - r-dplyr=1.0.7
+  - r-plotly=4.10.0
+  - r-dt=0.19
