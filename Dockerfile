@@ -4,7 +4,10 @@ FROM rocker/shiny:latest
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libssl-dev \
-    libxml2-dev
+    libxml2-dev \
+    libfreetype6-dev \
+    libharfbuzz-dev \
+    libfribidi-dev
 
 # Install required R packages
 RUN R -e "install.packages(c('shiny', 'dplyr', 'ggplot2', 'tidyverse', 'plotly', 'DT'), repos='http://cran.rstudio.com/')"
@@ -12,7 +15,7 @@ RUN R -e "install.packages(c('shiny', 'dplyr', 'ggplot2', 'tidyverse', 'plotly',
 # Copy your project files into the container
 # This assumes your app.R is in the src/ folder.
 COPY src/ /srv/shiny-server/
-COPY data/raw/ /data/raw/
+COPY data/raw/ /srv/data/raw/
 COPY LICENSE.md /LICENSE.md
 COPY README.md /README.md
 COPY img/demo.mp4 /img/demo.mp4
