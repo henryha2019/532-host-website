@@ -1,6 +1,11 @@
 # Use the official Rocker Shiny image with a specific R version
 FROM rocker/shiny:latest
 
+RUN apt-get update && apt-get install -y \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev
+
 # Install required R packages
 RUN R -e "install.packages(c('shiny', 'dplyr', 'ggplot2', 'tidyverse', 'plotly', 'DT'), repos='http://cran.rstudio.com/')"
 
